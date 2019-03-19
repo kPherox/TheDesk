@@ -130,9 +130,12 @@ function nowplaying(mode){
             if(!content || content=="" || content=="null"){
                 var content="#NowPlaying {song} / {album} / {artist}\n{url}";
             }
+            var electron = require("electron");
+            var ipc = electron.ipcRenderer;
             var flag=localStorage.getItem("artwork");
-            if(flag && arg.path){
-                media(arg.path,"image/png","new");
+            if(flag && arg.artworks.length > 0){
+                var img=arg.artworks[0].path;
+                ipc.send('bmp-image', [img,0]);
             }
             var regExp = new RegExp("{song}", "g");
             content = content.replace(regExp, arg.name);
