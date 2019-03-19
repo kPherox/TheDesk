@@ -43,7 +43,7 @@
     "vue": "^2.6.9"
   },
   "optionalDependencies": {
-    "itunes-nowplaying-mac": "^0.2.3",
+    "itunes-nowplaying-mac": "github:rinsuki/itunes-nowplaying-mac#pull/1/head",
     "nowplaying-node": "^0.1.3"
   },
   "build": {
