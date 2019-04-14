@@ -56,6 +56,7 @@
   "build": {
     "productName": "TheDesk",
     "appId": "top.thedesk",
+    "artifactName": "${productName}-${platform}-${arch}.${ext}",
     "asarUnpack": [
       "node_modules/itunes-nowplaying-mac"
     ],
@@ -65,14 +66,10 @@
     "win": {
       "icon": "build/thedesk.ico",
       "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        },
-        "portable",
+        "nsis:x64",
+        "nsis:ia32",
+        "portable:x64",
+        "portable:ia32",
         "appx"
       ]
     },
@@ -94,14 +91,16 @@
     "linux": {
       "icon": "build/icons",
       "target": [
-        "zip",
+        "zip:x64",
+        "zip:ia32",
         "snap"
       ],
       "category": "Network"
     },
     "mac": {
       "target": [
-        "dmg"
+        "dmg",
+        "zip"
       ]
     },
     "electronDownload": {
