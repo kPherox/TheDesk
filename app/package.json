@@ -65,7 +65,13 @@
     "win": {
       "icon": "build/thedesk.ico",
       "target": [
-        "nsis",
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
         "portable",
         "appx"
       ]
@@ -94,7 +100,9 @@
       "category": "Network"
     },
     "mac": {
-      "target": ["dmg","zip"]
+      "target": [
+        "dmg"
+      ]
     },
     "electronDownload": {
       "version": "4.1.4"
