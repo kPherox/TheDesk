@@ -2,12 +2,13 @@ os: osx
 language: node_js
 node_js:
 - '10.15.2'
-script: node -v
-before_deploy:
-  - npm install electron-builder -g
+cache: npm
+before_script:
   - cd app
   - npm install
-  - electron-builder --mac --x64 -p never
+  - npm install --only=dev
+script: npm run build -- --publish never
+before_deploy:
   - mv ../build/TheDesk*.dmg ../TheDesk.dmg
   - mv ../build/TheDesk*.zip ../TheDesk-darwin-x64.zip
   - cd ../
