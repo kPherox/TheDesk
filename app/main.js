@@ -110,6 +110,15 @@ app.on('activate', function () {
 		createWindow();
 	}
 });
+// macOSでquitイベントを発生させた時に全てのウィンドウが閉じたら終了
+app.on('before-quit', function () {
+	if (process.platform == 'darwin') {
+		app.on('window-all-closed', function () {
+			electron.session.defaultSession.clearCache(() => { })
+			app.quit();
+		});
+	}
+});
 
 function createWindow() {
 	if (isFile(lang_path)) {
